@@ -1,0 +1,49 @@
+﻿@model WesamTask.Models.EmployeeVM
+
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create New Employee</h2>
+
+
+<form asp-controller="Employee" asp-action="Create" method="post" class="form-group">
+
+    <label asp-for="FirstName">First Name</label>
+    <input type="text" asp-for="FirstName" class="form-control" />
+    <span class="text-danger" asp-validation-for="FirstName"></span>
+    <br />
+    <label asp-for="LastName">Last Name</label>
+    <input type="text" asp-for="LastName" class="form-control" />
+    <span class="text-danger" asp-validation-for="LastName"></span>
+    <br />
+
+    <label asp-for="Contact">Contact</label>
+    <input type="text" asp-for="Contact" class="form-control" />
+    <span class="text-danger" asp-validation-for="Contact"></span>
+    <br />
+    <label asp-for="Email"> Email</label>
+    <input type="email" asp-for="Email" class="form-control" />
+    <span class="text-danger" asp-validation-for="Email"></span>
+    <br />
+    <label asp-for="DateOfBirth">DateOfBirth</label>
+    <input type="date" asp-for="DateOfBirth" class="form-control" />
+    <span class="text-danger" asp-validation-for="DateOfBirth"></span>
+    <br />
+
+
+    <br />
+
+    <center>
+        <input type="submit" value="Save" class="btn btn-primary" />
+        <a asp-action="Index" class="btn btn-secondary">Back to list</a>
+
+    </center>
+    
+
+
+</form>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>

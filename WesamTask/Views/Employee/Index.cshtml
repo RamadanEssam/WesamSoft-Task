@@ -1,0 +1,75 @@
+﻿@model IQueryable<WesamTask.Models.EmployeeVM>
+@{
+    ViewBag.Title = "Employee";
+}
+<link href="~/lib/datatables/css/dataTables.bootstrap4.css" rel="stylesheet" />
+
+
+
+
+<div class="container">
+    
+    <h3 class="text-primary text-center"> Employees </h3>
+    <hr />
+
+    <a asp-controller="Employee" asp-action="Create" class="btn btn-primary">Add Employee</a>
+    <hr />
+
+
+    <table id="Employees" class="table table-striped js-basic-example table-bordered dt-responsive nowrap text-center">
+        <thead>
+            <tr>
+                @*<th class="text-center">Id</th>*@
+                <th class="text-center">First Name</th>
+                <th class="text-center">Last Name</th>
+
+                <th class="text-center">Contact</th>
+                <th class="text-center">Email  </th>
+                <th class="text-center">Date Of Birth</th>
+                <th class="text-center">Edit</th>
+                <th class="text-center">Delete</th>
+            </tr>
+        </thead>
+        @foreach (var item in Model)
+        {
+        <tr>
+            @*<td>@item.Id</td>*@
+            <td>@item.FirstName</td>
+            <td>@item.LastName</td>
+            <td>@item.Contact</td>
+            <td>@item.Email</td>
+            <td>@item.DateOfBirth.Date.ToShortDateString() </td>
+            <td><a asp-controller="Employee" asp-action="Edit" asp-route-id="@item.Id" class="btn btn-success">Edit</a></td>
+            <td><a asp-controller="Employee" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a></td>
+        </tr>
+        }
+
+    </table>
+
+</div>
+@section Scripts
+{
+    <script src="~/lib/datatables/js/jquery.dataTables.js"></script>
+    <script src="~/lib/datatables/js/dataTables.bootstrap4.js"></script>
+
+    @*<script src="~/lib/datatables/js/EmployeeDataTable.js"></script>*@
+
+}
+
+
+@section table{
+    <script>
+        $(function () {
+            $('.js-basic-example').DataTable({
+                responsive: true,
+                paging: true,
+                pageLength: 10,
+                bSort: true,
+                bFilter: true,
+                bLengthChange: true,
+                bInfo: true,
+                lengthMenu: [[5, 10, 25, 50, -1], [5, 10, 25, 50, "All"]],
+
+            });
+        });
+    </script>}
